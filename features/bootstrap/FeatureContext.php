@@ -49,19 +49,19 @@ class FeatureContext implements Context
     {
         $host = '127.0.0.1';
         $db = 'basic_api';
-        $port = 3306;
-        $user = 'devuser';
-        $pass = 'P@ssw0rd';
+        $port = 13306;
+        $user = 'dbuser';
+        $pass = 'dbpass';
         $charset = 'utf8mb4';
 
-        $dsn = "mysql:host=$host;port=$port;dbnae=$db;charset=$charset";
+        $dsn = "mysql:host=$host;port=$port;dbname=$db;charset=$charset";
         $opt = [
-            PDO::ATTR_ERRMODE => PDO::ERRORMODE_EXCEPTION,
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_EMULATE_PREPARES => false,
         ];
 
         $pdo = new PDO($dsn, $user, $pass, $opt);
 
-        $pdo->query('TRUNCATE album');
+        // $pdo->query('TRUNCATE album');
     }
 }
