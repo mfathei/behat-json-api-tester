@@ -1,0 +1,10 @@
+{
+    "name": "mahdy/behat-json-api-tester",
+    "authors": [
+        {
+            "name": "Mohamed Mahdy",
+            "email": "oracle.dev10g@gmail.com"
+        }
+    ],
+    "require": {}
+}
