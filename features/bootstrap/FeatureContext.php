@@ -1,7 +1,6 @@
 <?php
 
 use Behat\Behat\Context\Context;
-use Behat\Gherkin\Node\PyStringNode;
 use Behat\Gherkin\Node\TableNode;
 
 /**
@@ -26,7 +25,7 @@ class FeatureContext implements Context
     public function thereAreAlbumsWithTheFollowingDetails(TableNode $albums)
     {
         foreach ($albums->getColumnsHash() as $album) {
-          $this->apiContext->setRequestBody(json_encode($album));
+            $this->apiContext->setRequestBody(json_encode($album));
         }
 
         $this->apiContext->requestPath("/album", "POST");
@@ -36,11 +35,33 @@ class FeatureContext implements Context
      * @BeforeScenario
      */
     public function gatherContext(
-      \Behat\Behat\Hook\Scope\BeforeScenarioScope $scope
-    )
-    {
+        \Behat\Behat\Hook\Scope\BeforeScenarioScope $scope
+    ) {
         $this->apiContext = $scope->getEnvironment()->getContext(
             Imbo\BehatApiExtension\Context\ApiContext::class
         );
+    }
+
+    /**
+     * @BeforeScenario
+     */
+    public function cleanUpDatabase()
+    {
+        $host = '127.0.0.1';
+        $db = 'basic_api';
+        $port = 3306;
+        $user = 'devuser';
+        $pass = 'P@ssw0rd';
+        $charset = 'utf8mb4';
+
+        $dsn = "mysql:host=$host;port=$port;dbnae=$db;charset=$charset";
+        $opt = [
+            PDO::ATTR_ERRMODE => PDO::ERRORMODE_EXCEPTION,
+            PDO::ATTR_EMULATE_PREPARES => false,
+        ];
+
+        $pdo = new PDO($dsn, $user, $pass, $opt);
+
+        $pdo->query('TRUNCATE album');
     }
 }
