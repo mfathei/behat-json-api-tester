@@ -1,0 +1,34 @@
+# Use root/example as user/password credentials
+version: '3'
+
+services:
+
+  db_dev:
+    image: mysql:5.7
+      # volumes:
+        # - "./volumes/mysql_dev:/var/lib/mysql"
+    ports:
+      - "13306:3306"
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=P@ssw0rd
+      - MYSQL_DATABASE=basic_api
+      - MYSQL_USER=devuser
+      - MYSQL_PASSWORD=P@ssw0rd
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8090:8080
+
+  postgres:
+    image: postgres:10.2
+#    volumes:
+#      - "./volumes/postgres:/var/lib/postgresql/data"
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=dbuser
+      - POSTGRES_PASSWORD=dbpass
+      - POSTGRES_DB=basic_api
