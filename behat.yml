@@ -4,6 +4,14 @@ default:
             contexts:
                 - FeatureContext
                 - Imbo\BehatApiExtension\Context\ApiContext
+            filters:
+                tags: '~@symfony_4_edge_case'
+        symfony_4_edge_case:
+            contexts:
+                - FeatureContext
+                - Imbo\BehatApiExtension\Context\ApiContext
+            filters:
+                tags: '@symfony_4_edge_case'
     extensions:
         Imbo\BehatApiExtension:
             apiClient:
