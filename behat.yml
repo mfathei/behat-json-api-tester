@@ -3,7 +3,7 @@ default:
         default:
             contexts:
                 - FeatureContext
-                - Imbo\BehatApiExtenstion\Context\ApiContext
+                - Imbo\BehatApiExtension\Context\ApiContext
     extensions:
         Imbo\BehatApiExtension:
             apiClient:

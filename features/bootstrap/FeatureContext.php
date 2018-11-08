@@ -19,4 +19,28 @@ class FeatureContext implements Context
     public function __construct()
     {
     }
+
+    /**
+     * @Given there are Albums with the following details:
+     */
+    public function thereAreAlbumsWithTheFollowingDetails(TableNode $albums)
+    {
+        foreach ($albums->getColumnsHash() as $album) {
+          $this->apiContext->setRequestBody(json_encode($album));
+        }
+
+        $this->apiContext->requestPath("/album", "POST");
+    }
+
+    /**
+     * @BeforeScenario
+     */
+    public function gatherContext(
+      \Behat\Behat\Hook\Scope\BeforeScenarioScope $scope
+    )
+    {
+        $this->apiContext = $scope->getEnvironment()->getContext(
+            Imbo\BehatApiExtension\Context\ApiContext::class
+        );
+    }
 }
