@@ -1,0 +1,10 @@
+default:
+    suites:
+        default:
+            contexts:
+                - FeatureContext
+                - Imbo\BehatApiExtenstion\Context\ApiContext
+    extensions:
+        Imbo\BehatApiExtension:
+            apiClient:
+                base_uri: http://127.0.0.1:8000
