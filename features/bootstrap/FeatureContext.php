@@ -26,9 +26,9 @@ class FeatureContext implements Context
     {
         foreach ($albums->getColumnsHash() as $album) {
             $this->apiContext->setRequestBody(json_encode($album));
-        }
 
-        $this->apiContext->requestPath("/album", "POST");
+            $this->apiContext->requestPath("/album", "POST");
+        }
     }
 
     /**
@@ -62,6 +62,6 @@ class FeatureContext implements Context
 
         $pdo = new PDO($dsn, $user, $pass, $opt);
 
-        // $pdo->query('TRUNCATE album');
+        $pdo->query('TRUNCATE album');
     }
 }

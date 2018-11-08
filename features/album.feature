@@ -51,44 +51,45 @@ Feature: Provide a consistent standard JSON API endpoint
         ]
         """
 
-        Scenario: Can add a new Album
-            Given the request body is:
-            """
-            {
-              "title": "Awesome new Album",
-              "track_count": 7,
-              "release_date": "2030-12-05T01:02:03+00:00"
-            }
-            """
-            When I request "/album" using HTTP POST
-            Then the response code is 201
+    @t
+    Scenario: Can add a new Album
+        Given the request body is:
+        """
+        {
+          "title": "Awesome new Album",
+          "track_count": 7,
+          "release_date": "2030-12-05T01:02:03+00:00"
+        }
+        """
+        When I request "/album" using HTTP POST
+        Then the response code is 201
 
-        Scenario: Can update an existing album - PUT
-            Given the request body is:
-            """
-            {
-              "title": "Renamed an album",
-              "track_count": 9,
-              "release_date": "2019-01-07T23:22:21+00:00"
-            }
-            """
-            When I request "/album/2" using HTTP PUT
-            Then the response code is 204
+    Scenario: Can update an existing album - PUT
+        Given the request body is:
+        """
+        {
+          "title": "Renamed an album",
+          "track_count": 9,
+          "release_date": "2019-01-07T23:22:21+00:00"
+        }
+        """
+        When I request "/album/2" using HTTP PUT
+        Then the response code is 204
 
-        Scenario: Can update an existing Album
-            Given the request body is:
-            """
-            {
-              "track_count": 10
-            }
-            """
-            When I request "/album/2" using HTTP PATCH
-            Then the response code is 204
+    Scenario: Can update an existing Album
+        Given the request body is:
+        """
+        {
+          "track_count": 10
+        }
+        """
+        When I request "/album/2" using HTTP PATCH
+        Then the response code is 204
 
-        Scenario: Can delete an Album
-            Given I request "/album/3" using HTTP GET
-            Then the response code is 200
-            Given I request "/album/3" using HTTP DELETE
-            Then the response code is 204
-            Given I request "/album/3" using HTTP GET
-            Then the response code is 404
+    Scenario: Can delete an Album
+        Given I request "/album/3" using HTTP GET
+        Then the response code is 200
+        Given I request "/album/3" using HTTP DELETE
+        Then the response code is 204
+        Given I request "/album/3" using HTTP GET
+        Then the response code is 404
