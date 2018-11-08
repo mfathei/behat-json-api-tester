@@ -6,5 +6,8 @@
             "email": "oracle.dev10g@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "behat/behat": "^3.5",
+        "imbo/behat-api-extension": "^2.1"
+    }
 }
