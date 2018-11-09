@@ -24,7 +24,7 @@ Feature: Provide a consistent standard JSON API endpoint
             "release_date": "2020-01-08T00:00:00+00:00"
         }
         """
-
+    @t
     Scenario: Can get a collection of Albums
         Given I request "/album" using HTTP GET
         Then the response code is 200
