@@ -11,6 +11,7 @@ Feature: Provide a consistent standard JSON API endpoint
             | another great album               | 9           | 2019-01-07T23:22:21+00:00 |
             | now that's what I call Album vol 2| 23          | 2018-02-06T11:10:09+00:00 |
 
+    @t
     Scenario: Can get a single Album
         Given I request "/album/1" using HTTP GET
         Then the response code is 200

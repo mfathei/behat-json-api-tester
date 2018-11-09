@@ -100,3 +100,18 @@ Feature: Provide insight into how Symfony 4 behaves on the unhappy path
         }
     }
     """
+
+  @symfony_4_edge_case
+  Scenario: Album ID must be numeric
+    Given I request "/album/a" using HTTP GET
+    Then the response code is 404
+
+  @symfony_4_edge_case
+  Scenario: Album ID must be positive
+    Given I request "/album/-99" using HTTP GET
+    Then the response code is 404
+
+  @symfony_4_edge_case
+  Scenario: Album ID must exist
+    Given I request "/album/6" using HTTP GET
+    Then the response code is 404
