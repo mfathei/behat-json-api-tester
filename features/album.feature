@@ -77,6 +77,7 @@ Feature: Provide a consistent standard JSON API endpoint
         When I request "/album/2" using HTTP PUT
         Then the response code is 204
 
+    @t
     Scenario: Can update an existing Album
         Given the request body is:
         """
