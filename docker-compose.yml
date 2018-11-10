@@ -5,8 +5,8 @@ services:
 
   db_dev:
     image: mysql:5.7
-      # volumes:
-        # - "./volumes/mysql_dev:/var/lib/mysql"
+    volumes:
+      - ./volumes/mysql_dev:/var/lib/mysql
     ports:
       - "13306:3306"
     restart: always
@@ -24,8 +24,8 @@ services:
 
   postgres:
     image: postgres:10.2
-#    volumes:
-#      - "./volumes/postgres:/var/lib/postgresql/data"
+    volumes:
+      - "./volumes/postgres:/var/lib/postgresql/data"
     ports:
       - "5432:5432"
     environment:

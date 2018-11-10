@@ -52,7 +52,7 @@ Feature: Provide a consistent standard JSON API endpoint
         ]
         """
 
-    @t
+    @t @pos
     Scenario: Can add a new Album
         Given the request body is:
         """

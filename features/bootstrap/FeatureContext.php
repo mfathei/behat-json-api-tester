@@ -48,10 +48,11 @@ class FeatureContext implements Context
     public function cleanUpDatabase()
     {
         $host = '127.0.0.1';
-        $db = 'basic_api';
+        // $db = 'basic_api';// for Symfony4-json-api project
+        $db = 'fos_rest_api';// for Symfony4-fos-rest-api project
         $port = 13306;
-        $user = 'dbuser';
-        $pass = 'dbpass';
+        $user = 'root';
+        $pass = 'P@ssw0rd';
         $charset = 'utf8mb4';
 
         $dsn = "mysql:host=$host;port=$port;dbname=$db;charset=$charset";
