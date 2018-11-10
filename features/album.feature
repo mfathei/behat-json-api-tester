@@ -11,7 +11,7 @@ Feature: Provide a consistent standard JSON API endpoint
             | another great album               | 9           | 2019-01-07T23:22:21+00:00 |
             | now that's what I call Album vol 2| 23          | 2018-02-06T11:10:09+00:00 |
 
-    @t
+    @t @pos
     Scenario: Can get a single Album
         Given I request "/album/1" using HTTP GET
         Then the response code is 200
@@ -24,7 +24,7 @@ Feature: Provide a consistent standard JSON API endpoint
             "release_date": "2020-01-08T00:00:00+00:00"
         }
         """
-    @t
+    @t @pos
     Scenario: Can get a collection of Albums
         Given I request "/album" using HTTP GET
         Then the response code is 200
@@ -64,7 +64,7 @@ Feature: Provide a consistent standard JSON API endpoint
         """
         When I request "/album" using HTTP POST
         Then the response code is 201
-    @t
+    @t @pos
     Scenario: Can update an existing album - PUT
         Given the request body is:
         """
@@ -77,7 +77,7 @@ Feature: Provide a consistent standard JSON API endpoint
         When I request "/album/2" using HTTP PUT
         Then the response code is 204
 
-    @t
+    @t @pos
     Scenario: Can update an existing Album
         Given the request body is:
         """
@@ -88,6 +88,7 @@ Feature: Provide a consistent standard JSON API endpoint
         When I request "/album/2" using HTTP PATCH
         Then the response code is 204
 
+    @pos
     Scenario: Can delete an Album
         Given I request "/album/3" using HTTP GET
         Then the response code is 200
